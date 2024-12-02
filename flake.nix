@@ -11,7 +11,7 @@
       in
       {
         devShell = with pkgs; mkShell {
-          buildInputs = [ cargo rustc rustfmt pre-commit rustPackages.clippy rust-analyzer ];
+          buildInputs = [ cargo rustc rustfmt pre-commit rustPackages.clippy rust-analyzer gnucobol python3 ];
           RUST_SRC_PATH = rustPlatform.rustLibSrc;
         };
       }
