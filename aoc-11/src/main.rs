@@ -10,17 +10,15 @@ fn input_to_vector(input: &str) -> Vec<u64> {
 fn blink_stone(value: u64) -> Vec<u64> {
     if value == 0 {
         vec![1]
-    } else {
+    } else if value > 9 && (value == 10 || ((value as f32).log10().ceil() as u32) % 2 == 0) {
         let as_str = value.to_string();
-        if as_str.chars().count() % 2 == 0 {
-            let middle = as_str.chars().count() / 2;
-            let split = as_str.split_at(middle);
-            let first = split.0.parse::<u64>().unwrap();
-            let second = split.1.parse::<u64>().unwrap();
-            vec![first, second]
-        } else {
-            vec![value * 2024]
-        }
+        let middle = as_str.chars().count() / 2;
+        let split = as_str.split_at(middle);
+        let first = split.0.parse::<u64>().unwrap();
+        let second = split.1.parse::<u64>().unwrap();
+        vec![first, second]
+    } else {
+        vec![value * 2024]
     }
 }
 
